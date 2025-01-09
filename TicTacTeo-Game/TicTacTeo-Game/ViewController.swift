@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     enum Turn {
     case Cross
     case Nought
@@ -33,9 +34,50 @@ class ViewController: UIViewController {
     let CROSS  = "X"
     let NOUGHT = "O"
     
+    var btns:[UIButton] = [UIButton]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        initBtnsArray()
+    }
+    func initBtnsArray(){
+        btns.append(a1Btn)
+        btns.append(a2Btn)
+        btns.append(a3Btn)
+        
+        btns.append(b1Btn)
+        btns.append(b2Btn)
+        btns.append(b3Btn)
+        
+        btns.append(c1Btn)
+        btns.append(c2Btn)
+        btns.append(c3Btn)
+    }
+    func isFullBoard() -> Bool {
+        for btn in btns {
+            if btn.title(for: .normal) == nil {
+                return false
+            }
+        }
+        resetBoard()
+        return true
+    }
+    func resetBoard()  {
+        for btn in btns {
+            btn.isEnabled = true
+            btn.setTitle(nil, for: .normal)
+        }
+        
+        if firstTurn == Turn.Cross {
+            firstTurn = Turn.Nought
+            currentTurn = Turn.Nought
+        }
+        
+        if firstTurn == Turn.Nought {
+            firstTurn = Turn.Cross
+            currentTurn = Turn.Cross
+        }
     }
     func checkVectory(_ shape: String)->Bool{
         if a1Btn.title(for: .normal) == shape && a2Btn.title(for: .normal) == shape && a3Btn.title(for: .normal) == shape {
@@ -62,13 +104,20 @@ class ViewController: UIViewController {
         
         return false
     }
+    
     @IBAction func boardTapAction(_ sender: UIButton) {
         addToBoard(sender)
         if checkVectory(CROSS) {
+            resetBoard()
             print("Cross wins!")
         }
         if checkVectory(NOUGHT) {
+            resetBoard()
             print("Nought wins!")
+        }
+        if isFullBoard() {
+            resetBoard()
+            print("Drew!")
         }
     }
     
