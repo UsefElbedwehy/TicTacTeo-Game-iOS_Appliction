@@ -34,6 +34,8 @@ class ViewController: UIViewController {
     let CROSS  = "X"
     let NOUGHT = "O"
     
+    var actionCounter = 0
+    
     var btns:[UIButton] = [UIButton]()
     
     override func viewDidLoad() {
@@ -72,12 +74,26 @@ class ViewController: UIViewController {
         if firstTurn == Turn.Cross {
             firstTurn = Turn.Nought
             currentTurn = Turn.Nought
+            turnLabel.text = NOUGHT
+            
         }
         
         if firstTurn == Turn.Nought {
             firstTurn = Turn.Cross
             currentTurn = Turn.Cross
+            turnLabel.text = CROSS
+            
         }
+        actionCounter = 0
+
+    }
+    func addAlert(_ msg: String){
+        let alrt = UIAlertController(title: "Game Over", message: msg, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            self.resetBoard()
+        }
+        alrt.addAction(okAction)
+        self.present(alrt, animated: true, completion: nil)
     }
     func checkVectory(_ shape: String)->Bool{
         if a1Btn.title(for: .normal) == shape && a2Btn.title(for: .normal) == shape && a3Btn.title(for: .normal) == shape {
@@ -108,16 +124,13 @@ class ViewController: UIViewController {
     @IBAction func boardTapAction(_ sender: UIButton) {
         addToBoard(sender)
         if checkVectory(CROSS) {
-            resetBoard()
-            print("Cross wins!")
+            addAlert("Cross wins!")
         }
         if checkVectory(NOUGHT) {
-            resetBoard()
-            print("Nought wins!")
+            addAlert("Nought wins!")
         }
-        if isFullBoard() {
-            resetBoard()
-            print("Drew!")
+        if actionCounter == 9 {
+            addAlert("Drew!")
         }
     }
     
@@ -125,15 +138,16 @@ class ViewController: UIViewController {
         if sender.title(for: .normal) == nil {
             
             if currentTurn == Turn.Cross {
-                sender.setTitle(CROSS, for: .normal)
                 currentTurn = Turn.Nought
                 turnLabel.text = NOUGHT
-                
+                sender.setTitle(CROSS, for: .normal)
+                actionCounter += 1
+    
             }else if currentTurn == Turn.Nought {
-                sender.setTitle(NOUGHT, for: .normal)
                 currentTurn = Turn.Cross
                 turnLabel.text = CROSS
-                
+                sender.setTitle(NOUGHT, for: .normal)
+                actionCounter += 1
             }
             sender.isEnabled = false
         }
