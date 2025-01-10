@@ -69,6 +69,7 @@ class ViewController: UIViewController {
         for btn in btns {
             btn.isEnabled = true
             btn.setTitle(nil, for: .normal)
+            btn.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         }
         
         if firstTurn == Turn.Cross {
@@ -97,24 +98,48 @@ class ViewController: UIViewController {
     }
     func checkVectory(_ shape: String)->Bool{
         if a1Btn.title(for: .normal) == shape && a2Btn.title(for: .normal) == shape && a3Btn.title(for: .normal) == shape {
+            a1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            a2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            a3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }else if b1Btn.title(for: .normal) == shape && b2Btn.title(for: .normal) == shape && b3Btn.title(for: .normal) == shape {
+            b1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }else if c1Btn.title(for: .normal) == shape && c2Btn.title(for: .normal) == shape && c3Btn.title(for: .normal) == shape {
+            c1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }
         
         if a1Btn.title(for: .normal) == shape && b1Btn.title(for: .normal) == shape && c1Btn.title(for: .normal) == shape {
+            a1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }else if a2Btn.title(for: .normal) == shape && b2Btn.title(for: .normal) == shape && c2Btn.title(for: .normal) == shape {
+            a2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }else if a3Btn.title(for: .normal) == shape && b3Btn.title(for: .normal) == shape && c3Btn.title(for: .normal) == shape {
+            a3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }
         
         if a1Btn.title(for: .normal) == shape && b2Btn.title(for: .normal) == shape && c3Btn.title(for: .normal) == shape {
+            a1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }else if a3Btn.title(for: .normal) == shape && b2Btn.title(for: .normal) == shape && c1Btn.title(for: .normal) == shape {
+            a3Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            b2Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
+            c1Btn.setTitleColor(UIColor(red: 1, green: 0, blue: 0, alpha: 1.0), for: .normal)
             return true
         }
         
